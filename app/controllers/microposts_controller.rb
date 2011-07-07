@@ -3,6 +3,12 @@ class MicropostsController < ApplicationController
   before_filter :authorized_user, :only => :destroy
   
   def index
+    #@user = User.find(params[:id])
+    #@microposts = current_user.microposts.paginate(:page => params[:page])
+    #@title = @user.name
+    @current_time = Time.now
+    @user = User.find(params[:user_id])
+    @micropost = @user.microposts
     
   end
 

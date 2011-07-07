@@ -1,1 +1,7 @@
-Test
+<%= @current_time %><br />
+<%= @user.name %><br />
+<% unless @user.microposts.empty? %>
+        <table class="microposts" summary="User microposts">
+          <%= render @micropost %>
+        </table>
+      <% end %>
