@@ -1,7 +1,11 @@
-<%= @current_time %><br />
-<%= @user.name %><br />
+<h1>
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</h1>
+
 <% unless @user.microposts.empty? %>
-        <table class="microposts" summary="User microposts">
-          <%= render @micropost %>
-        </table>
-      <% end %>
+  <table class="microposts" summary="User microposts">
+    <%= render @micropost %>
+    </table>
+    <%= will_paginate @micropost %>
+<% end %>

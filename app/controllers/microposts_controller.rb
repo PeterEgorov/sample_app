@@ -8,7 +8,7 @@ class MicropostsController < ApplicationController
     #@title = @user.name
     @current_time = Time.now
     @user = User.find(params[:user_id])
-    @micropost = @user.microposts
+    @micropost = @user.microposts.paginate(:page => params[:page])
     
   end
 
