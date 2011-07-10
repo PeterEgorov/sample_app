@@ -1,0 +1,14 @@
+<li>
+  <span class="vacancy">
+    <span class="title"><%= vacancy.title %></span>
+    <span class="timestamp">
+      Posted <%= time_ago_in_words(vacancy.created_at) %> ago. <br />
+    </span>
+  </span>
+  <% if current_user?(vacancy.user) %>
+  <span>
+    <%= link_to "delete", vacancy, :method => :delete, :confirm => "You sure?", :title => vacancy.title %>
+  </span>
+  <% end %>
+  
+</li>

@@ -227,6 +227,21 @@ table.microposts tr td.micropost span.timestamp {
   color: #666;
 }
 
+/* Vacancies */
+
+ul.vacancies {
+  margin-top: 1em;
+}
+
+ul.vacancies li {
+  height: 70px;
+}
+
+ul.vacancies li span.timestamp {
+  font-size: 75%;
+  font-style: italic;
+}
+
 div.user_info img {
   padding-right: 0.1em;
 }
