@@ -1,3 +1,6 @@
+<% if @vacancy.nil? %>
+	Not found!
+<% else %>
 <li>
   <span class="vacancy">
     <span class="title"><%= @vacancy.title %></span>
@@ -5,15 +8,11 @@
       Posted <%= time_ago_in_words(@vacancy.created_at) %> ago! <br />
     </span>
     <span class="text">
-      <%= @vacancy.text %> 
+      <%= @vacancy.text %> <br />
     </span>
-  </span>
-  <% user = vacancy.user rescue User.find(1) %>
-  <% if current_user?(user) %>
- 
-  <span>
-    <%= link_to "delete", vacancy, :method => :delete, :confirm => "You sure?", :title => "Delete #{vacancy.title}" %>
-  </span>
+    <% if current_user?(@vacancy.user) %>
+    <%= link_to "delete", @vacancy, :method => :delete, :confirm => "You sure?", :title => @vacancy.title %>
   <% end %>
-  
+  </span>
 </li>
+<% end %>

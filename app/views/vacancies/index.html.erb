@@ -1,9 +1,17 @@
 <h1>All vacancies</h1>
-
-<%= will_paginate %>
-
-<ul class="vacancies">
-    <%= render @vacancies %>
-</ul>
-
-<%= will_paginate @vacancies %>
+<table class="vacancy" summary="vacancy">
+  <tr>
+    <td class="main">
+		<% unless @vacancies.empty? %>
+  			<table class="vacancies" summary="Vacancies">
+    			<%= render @vacancies %>
+    		</table>
+    		<%= will_paginate @vacancies %>
+		<% end %>
+	</td>
+<td class="sidebar round">
+	<% if !current_user.nil? %>
+	<%= link_to "Create new vacancy", new_vacancy_path %>
+	<% end %>
+</td>
+</table>

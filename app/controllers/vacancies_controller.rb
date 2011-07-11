@@ -1,9 +1,10 @@
 class VacanciesController < ApplicationController
   before_filter :authenticate, :only => [:create, :destroy]
-  before_filter :authorized_user, :only => :destroy
+  before_filter :authorized_user, :only => [:create, :destroy]
   
   def new
     @title = "New"
+    @vacancy = Vacancy.new
   end
   
   def index
@@ -12,8 +13,9 @@ class VacanciesController < ApplicationController
   end
 
   def show
-    @title = "Show"
-    @vacancy = current_user.vacancies.find(:id)
+    @title = "Show vacancy"
+    #@user = current_user #User.find(params[:id])
+    @vacancy = Vacancy.find_by_id(params[:id]) 
   end
   
   def create
@@ -21,9 +23,13 @@ class VacanciesController < ApplicationController
     @vacancy  = current_user.vacancies.build(params[:vacancy])
     if @vacancy.save
       flash[:success] = "Vacancy created!"
-      redirect_to root_path
+      redirect_to vacancies_path
     else
-      render 'pages/home'
+      #not working :((
+      flash[:error] = "Vacancy not created!"
+      @vacancy.title.clear
+      @vacancy.text.clear
+      render 'new'
     end
   end
   
@@ -37,7 +43,7 @@ class VacanciesController < ApplicationController
   
   def destroy
     @vacancy.destroy
-    redirect_back_or root_path
+    redirect_to vacancies_path
   end
   
   private
