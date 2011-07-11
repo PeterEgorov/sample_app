@@ -103,7 +103,7 @@ PLATFORMS
 DEPENDENCIES
   factory_girl_rails (= 1.0.1)
   faker (= 0.9.5)
-  gravatar_image_tag (= 1.0.0)
+  gravatar_image_tag
   rails (= 3.0.9)
   rspec (= 2.6.0)
   rspec-rails (= 2.6.1)
