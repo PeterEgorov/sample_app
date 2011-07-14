@@ -1,5 +1,5 @@
 class VacanciesController < ApplicationController
-  before_filter :authenticate, :only => [:create, :destroy]
+  before_filter :authenticate, :only => [:index, :create, :destroy]
   before_filter :authorized_user, :only => [:create, :destroy]
   
   def new
