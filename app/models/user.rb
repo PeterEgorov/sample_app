@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   attr_accessible( :name, :email, :password, :password_confirmation )
   
   has_many :microposts, :dependent => :destroy
-  has_many :vacancies, :dependent => :destroy
+  has_many :vacancies, :dependent => :destroy, :class_name => Vacancy.name, :foreign_key => :user_id
   has_many :relationships, :foreign_key => "follower_id", :dependent => :destroy
   has_many :following, :through => :relationships, :source => :followed
   has_many :reverse_relationships, :foreign_key => "followed_id", :class_name => "Relationship", :dependent => :destroy
